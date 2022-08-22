@@ -11,18 +11,12 @@ class NegociacaoController {
     adiciona(event) {
         event.preventDefault();
         
-        //2016-11-12
-        let data = new Date(...
-            this._inputData.value
-                .split('-')
-                .map(function(item, indice){
-                    return item - indice % 2
-                })
+        let negociacao = new Negociacao(
+            DateHelper.textoParaData(this._inputData.value),
+            this._inputQuantidade.value,
+            this._inputValor.value
         );
-        console.log(data);
-        console.log(typeof(data));
 
+        console.log(DateHelper.dataParaTexto(negociacao.data));
     }
-
-    //adicionar a negocição em uma lista
 }
