@@ -1,10 +1,11 @@
-class NegociacoesView {
+// Herança extends
+class NegociacoesView extends View {
 
     constructor(elemento) {
-        this._elemento = elemento;
+        super(elemento);
     }
-    
-    _template(model) {
+
+    template(model) {
         return `
         <table class="table table-hover table-bordered">
             <thead>
@@ -31,18 +32,11 @@ class NegociacoesView {
                 }
             </tbody>
                 <td colspan="3"></td>
-                <td>${
-                    model.negociacoes.reduce(function(total, n) {
-                        return total + n.volume;
-                    }, 0.0)
-                }</td>
+                <td>${model.negociacoes.reduce((total, n) => total + n.volume, 0.0)}</td>
             <tfoot>
             </tfoot>
         </table>
-        `
+        `;
     }
 
-    update(model) {
-        this._elemento.innerHTML = this._template(model);
-    }
 }
